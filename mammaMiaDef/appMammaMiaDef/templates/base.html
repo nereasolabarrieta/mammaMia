@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% load static %}
+    {% load i18n %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title> {% block titulo %}{% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Core Stylesheet -->
+    <link href="{% static 'style.css'%}" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="{% static 'css/responsive/responsive.css'%}" rel="stylesheet">
+
+    <form action= "{% url 'set_language' %}" method="post"> {% csrf_token %}
+        <input name="next" type="hidden" value= "{{redirect_to }}" />
+        <select name = "language">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages%}
+            {% for language in languages%}
+                <option value="{{language.code}}" {% if language.code == LANGUAGE_CODE %} selected {%endif%}>
+                    {{ language.name_local }} ({{ language.code }})
+                </option>
+            {% endfor%}
+        </select>
+        <input type="submit" value="Change" />
+</form>
+</head>
+
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="yummy-load"></div>
+    </div>
+
+    <!-- Background Pattern Swither -->
+    <div id="pattern-switcher">
+       Cookies
+    </div>
+    <div id="patter-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+
+    <!-- ****** Top Header Area Start ****** -->
+    <div class="top_header_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-5 col-sm-6">
+                    <!--  Top Social bar start -->
+                    <div class="top_social_bar">
+                        <a href="https://www.facebook.com/lamammadonosti/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://twitter.com/lamammadonosti?lang=es"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/company/ristorante-pizzeria-la-mamma/about/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <!--  Login Register Area -->
+                <div class="col-7 col-sm-6">
+                    <div class="signup-search-area d-flex align-items-center justify-content-end">
+                        <div class="login_register_area d-flex">
+                            <div class="login">
+                                <a href="register.html">{% trans "Contacta"%}</a>
+                            </div>
+                            <div class="register">
+                                <a href="register.html">943434343 / mammamia@donosti.es</a>
+                            </div>
+                        </div>
+                        <!-- Search Button Area -->
+                        <div class="search_button">
+                            <a class="searchBtn" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                        </div>
+                        <!-- Search Form -->
+                        <div class="search-hidden-form">
+                            <form action="#" method="get">
+                                <input type="search" name="search" id="search-anything" placeholder="Search Anything...">
+                                <input type="submit" value="" class="d-none">
+                                <span class="searchBtn"><i class="fa fa-times" aria-hidden="true"></i></span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ****** Top Header Area End ****** -->
+
+    <!-- ****** Header Area Start ****** -->
+    <header class="header_area">
+        <div class="container">
+            <div class="row">
+                <!-- Logo Area Start -->
+                <div class="col-12">
+                    <div class="logo_area text-center">
+                        <a href="#" class="yummy-logo">Mamma Mia</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#yummyfood-nav" aria-controls="yummyfood-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i> Menu</button>
+                        <!-- Menu Area Start -->
+                        <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
+                            <ul class="navbar-nav" id="yummy-nav">
+                                <li class="nav-item active">
+                                     <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'pizzas' %}">{% trans "Pizzas"%}</a>
+                                </li>
+                                <li class="nav-item">
+                                     <a class="nav-link" href="{% url 'masas' %}">{% trans "Masas"%}</a>
+                                </li>
+                                <li class="nav-item">
+                                     <a class="nav-link" href="{% url 'ingredientes' %}">{% trans "Ingredientes"%}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.tripadvisor.es/Restaurant_Review-g187457-d3701239-Reviews-La_Mamma_Mia-San_Sebastian_Donostia_Province_of_Guipuzcoa_Basque_Country.html">{% trans "Sobre nosotras"%}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link">{% trans "Contacto"%}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ****** Header Area End ****** -->
+
+    <!-- ****** Welcome Post Area Start ****** -->
+    <section class="welcome-post-sliders owl-carousel">
+
+        <!-- Single Slide -->
+        <div class="welcome-single-slide">
+            <!-- Post Thumb -->
+            <img src="{% static 'img/bg-img/1.jpg'%}" alt="">
+            <!-- Overlay Text -->
+            <div class="project_title">
+                <div class="post-date-commnents d-flex">
+                    Medipizza
+                </div>
+                    <h5>{% trans "Nuestra pizza Mediterránea, para los más saludables."%}</h5>
+            </div>
+        </div>
+
+        <!-- Single Slide -->
+        <div class="welcome-single-slide">
+            <!-- Post Thumb -->
+            <img src="{% static 'img/bg-img/2.jpg'%}" alt="">
+            <!-- Overlay Text -->
+            <div class="project_title">
+                <div class="post-date-commnents d-flex">
+                    Pizzalami
+                </div>
+                    <h5>{% trans "Para los más carnívoros, ¡Pizzalami!"%}</h5>
+            </div>
+        </div>
+
+        <!-- Single Slide -->
+        <div class="welcome-single-slide">
+            <!-- Post Thumb -->
+            <img src="{% static 'img/bg-img/3.jpg'%}" alt="">
+            <!-- Overlay Text -->
+              <div class="project_title">
+                <div class="post-date-commnents d-flex">
+                    Sabrosona
+                </div>
+                    <h5>{% trans "Una mezcla entre la mítica Carbonara y sabores nuevos."%}</h5>
+            </div>
+        </div>
+
+           <!-- Single Slide -->
+        <div class="welcome-single-slide">
+            <!-- Post Thumb -->
+            <img src="{% static 'img/bg-img/4.jpg'%}" alt="">
+            <!-- Overlay Text -->
+            <div class="project_title">
+                <div class="post-date-commnents d-flex">
+                    Finízzima
+                </div>
+                    <h5>{% trans "Si te gustan las masas finas, ésta pizza es tu media naranja."%}</h5>
+            </div>
+        </div>
+
+    </section>
+    <!-- ****** Welcome Area End ****** -->
+
+    <!-- ****** Categories Area Start ****** -->
+    <section class="categories_area clearfix" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
+                        <img src="{% static 'img/catagory-img/foto1.jpg' %}" alt="">
+                        <div class="catagory-title">
+                            <a href="{% url 'pizzas' %}">
+                                <h5>{% trans "Pizzas"%}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single_catagory wow fadeInUp" data-wow-delay=".6s">
+                        <img src="{% static 'img/catagory-img/foto2.jpg' %}" alt="">
+                        <div class="catagory-title">
+                            <a href="{% url 'masas' %}">
+                                <h5>{% trans "Masas"%}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single_catagory wow fadeInUp" data-wow-delay=".9s">
+                        <img src="{% static 'img/catagory-img/foto3.jpg' %}" alt="">
+                        <div class="catagory-title">
+                            <a href="{% url 'ingredientes' %}">
+                                <h5>{% trans "Ingredientes"%}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ****** Categories Area End ****** -->
+
+    <!-- ****** Blog Area Start ****** -->
+    <section class="blog_area section_padding_0_80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="row">
+
+                        <!-- Single Post -->
+                        <div class="col-12">
+                            <div class="single-post wow fadeInUp" data-wow-delay=".2s">
+                                <!-- Post Thumb -->
+                                {% block contenido%}
+                                {% endblock%}
+                            </div>
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-10">
+                            <div class="single-post wow fadeInUp" data-wow-delay=".4s">
+                                <!-- Post Thumb -->
+                                <h5>{% trans "Cómo hacer masa de pizza casera"%}</h5>
+                                <ol>
+                                    <li>1 ) {% trans "Para hacer la masa de pizza italiana es muy sencillo. En un bol agregamos el aceite, el agua y la levadura. Mezclamos y seguidamente le añadimos la harina y la pizca de sal. Una vez que tengáis mas o menos mezclado todo en el bol lo pasamos a la encima para amasar bien."%}</li>
+                                    <p></p>
+
+                                    <li>2 ) {% trans "Ahora comienza el amasado. Ponemos un poco de harina en la encimera y tendremos que amasar como 3 o 4 minutos sin parar. Veremos que hemos terminado cuando la masa esté lisa totalmente, si se pega mucho le ponemos un poco de harina y seguimos hasta que quede lisa."%}</li>
+                                    <p></p>
+
+                                    <li>3 ) {% trans "Ahora una vez lista, la dejamos reposar durante 1 hora más o menos. Una vez reposada la partimos en dos y podemos hacer dos pizzas muy majas. La amasamos y estiramos. Ponemos lo ingredientes y al horno. ¡Listo!"%}</li>
+                                </ol>
+                                <p></p>
+                                   {% trans " Si no os ha quedado demasiado claro... os dejamos un vídeo explicativo. ¡A por ello!"%}
+                                <video src="{% static 'video.mp4'%}" width="640" height="480" controls></video>
+                            </div>
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-6">
+                            <div class="single-post wow fadeInUp" data-wow-delay=".4s">
+                                <!-- Post Thumb -->
+                                <div class="post-thumb">
+                                    <img src="{% static 'img/blog-img/2.jpg'%}" alt="">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <div class="post-meta d-flex">
+                                        <div class="post-author-date-area d-flex">
+                                            <!-- Post Author -->
+                                            <div class="post-author">
+                                                <a href="#">By María</a>
+                                            </div>
+                                            <!-- Post Date -->
+                                            <div class="post-date">
+                                                <a href="#">Mayo, 2017</a>
+                                            </div>
+                                        </div>
+                                        <!-- Post Comment & Share Area -->
+                                        <div class="post-comment-share-area d-flex">
+                                            <!-- Post Favourite -->
+                                            <div class="post-favourite">
+                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 10</a>
+                                            </div>
+                                            <!-- Post Comments -->
+                                            <div class="post-comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 12</a>
+                                            </div>
+                                            <!-- Post Share -->
+                                            <div class="post-share">
+                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <h4 class="post-headline">{% trans "Donde encontrar las mejores tostas de San Sebastián"%}</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-6">
+                            <div class="single-post wow fadeInUp" data-wow-delay=".6s">
+                                <!-- Post Thumb -->
+                                <div class="post-thumb">
+                                    <img src="{% static 'img/blog-img/3.jpg'%}" alt="">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <div class="post-meta d-flex">
+                                        <div class="post-author-date-area d-flex">
+                                            <!-- Post Author -->
+                                            <div class="post-author">
+                                                <a href="#">By Lucas</a>
+                                            </div>
+                                            <!-- Post Date -->
+                                            <div class="post-date">
+                                                <a href="#">{% trans "Agosto, 2017"%}</a>
+                                            </div>
+                                        </div>
+                                        <!-- Post Comment & Share Area -->
+                                        <div class="post-comment-share-area d-flex">
+                                            <!-- Post Favourite -->
+                                            <div class="post-favourite">
+                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 12</a>
+                                            </div>
+                                            <!-- Post Comments -->
+                                            <div class="post-comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 14</a>
+                                            </div>
+                                            <!-- Post Share -->
+                                            <div class="post-share">
+                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <h4 class="post-headline">{% trans "Donde encontrar los mejores desayunos de San Sebastián"%}</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-6">
+                            <div class="single-post wow fadeInUp" data-wow-delay=".8s">
+                                <!-- Post Thumb -->
+                                <div class="post-thumb">
+                                    <img src="{% static 'img/blog-img/4.jpg'%}" alt="">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <div class="post-meta d-flex">
+                                        <div class="post-author-date-area d-flex">
+                                            <!-- Post Author -->
+                                            <div class="post-author">
+                                                <a href="#">By Esteban</a>
+                                            </div>
+                                            <!-- Post Date -->
+                                            <div class="post-date">
+                                                <a href="#">Septiembre, 2017</a>
+                                            </div>
+                                        </div>
+                                        <!-- Post Comment & Share Area -->
+                                        <div class="post-comment-share-area d-flex">
+                                            <!-- Post Favourite -->
+                                            <div class="post-favourite">
+                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 7</a>
+                                            </div>
+                                            <!-- Post Comments -->
+                                            <div class="post-comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 12</a>
+                                            </div>
+                                            <!-- Post Share -->
+                                            <div class="post-share">
+                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <h4 class="post-headline">{% trans "Top 10 de pintxos de todo Euskadi"%}</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-6">
+                            <div class="single-post wow fadeInUp" data-wow-delay="1s">
+                                <!-- Post Thumb -->
+                                <div class="post-thumb">
+                                    <img src="{% static 'img/blog-img/5.jpg'%}" alt="">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <div class="post-meta d-flex">
+                                        <div class="post-author-date-area d-flex">
+                                            <!-- Post Author -->
+                                            <div class="post-author">
+                                                <a href="#">By Clara</a>
+                                            </div>
+                                            <!-- Post Date -->
+                                            <div class="post-date">
+                                                <a href="#">{% trans "Novimebre, 2017"%}</a>
+                                            </div>
+                                        </div>
+                                        <!-- Post Comment & Share Area -->
+                                        <div class="post-comment-share-area d-flex">
+                                            <!-- Post Favourite -->
+                                            <div class="post-favourite">
+                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 22</a>
+                                            </div>
+                                            <!-- Post Comments -->
+                                            <div class="post-comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 20</a>
+                                            </div>
+                                            <!-- Post Share -->
+                                            <div class="post-share">
+                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <h4 class="post-headline">{% trans "¿Brunch en Donosti? ¡Claro!"%}</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ******* List Blog Area Start ******* -->
+
+                        <!-- Single Post -->
+                        <div class="col-12">
+                            <div class="list-blog single-post d-sm-flex wow fadeInUpBig" data-wow-delay=".2s">
+                                <!-- Post Thumb -->
+                                <div class="post-thumb">
+                                    <img src="{% static 'img/blog-img/6.jpg'%}" alt="">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <div class="post-meta d-flex">
+                                        <div class="post-author-date-area d-flex">
+                                            <!-- Post Author -->
+                                            <div class="post-author">
+                                                <a href="#">By Eider</a>
+                                            </div>
+                                            <!-- Post Date -->
+                                            <div class="post-date">
+                                                <a href="#">{% trans "Enero, 2018"%}</a>
+                                            </div>
+                                        </div>
+                                        <!-- Post Comment & Share Area -->
+                                        <div class="post-comment-share-area d-flex">
+                                            <!-- Post Favourite -->
+                                            <div class="post-favourite">
+                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 8</a>
+                                            </div>
+                                            <!-- Post Comments -->
+                                            <div class="post-comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 4</a>
+                                            </div>
+                                            <!-- Post Share -->
+                                            <div class="post-share">
+                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <h4 class="post-headline">{% trans "Para los más golosos"%}</h4>
+                                    </a>
+                                    <p>{% trans "Una cafetería de Donosti ofrece todo tipo de dulces, con recomendación de con qué acompañarlo."%}</p>
+                                    <a href="#" class="read-more">{% trans "Seguir leyendo..."%}</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-12">
+                            <div class="list-blog single-post d-sm-flex wow fadeInUpBig" data-wow-delay=".4s">
+                                <!-- Post Thumb -->
+                                <div class="post-thumb">
+                                    <img src="{% static 'img/blog-img/7.jpg'%}" alt="">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <div class="post-meta d-flex">
+                                        <div class="post-author-date-area d-flex">
+                                            <!-- Post Author -->
+                                            <div class="post-author">
+                                                <a href="#">By Borja</a>
+                                            </div>
+                                            <!-- Post Date -->
+                                            <div class="post-date">
+                                                <a href="#">{% trans "Marzo, 2018"%}</a>
+                                            </div>
+                                        </div>
+                                        <!-- Post Comment & Share Area -->
+                                        <div class="post-comment-share-area d-flex">
+                                            <!-- Post Favourite -->
+                                            <div class="post-favourite">
+                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 11</a>
+                                            </div>
+                                            <!-- Post Comments -->
+                                            <div class="post-comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 13</a>
+                                            </div>
+                                            <!-- Post Share -->
+                                            <div class="post-share">
+                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <h4 class="post-headline">{% trans "¡Pintxos, pintxos y más pintxos!"%}</h4>
+                                    </a>
+                                    <p>{% trans "Descubre una de las mejores rutas gastronómicas de pintxos de Donosti."%}</p>
+                                    <a href="#" class="read-more">{% trans "Seguir leyendo..."%}</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-12">
+                            <div class="list-blog single-post d-sm-flex wow fadeInUpBig" data-wow-delay=".6s">
+                                <!-- Post Thumb -->
+                                <div class="post-thumb">
+                                    <img src="{% static 'img/blog-img/8.jpg'%}" alt="">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <div class="post-meta d-flex">
+                                        <div class="post-author-date-area d-flex">
+                                            <!-- Post Author -->
+                                            <div class="post-author">
+                                                <a href="#">By Juan</a>
+                                            </div>
+                                            <!-- Post Date -->
+                                            <div class="post-date">
+                                                <a href="#">{% trans "Abril, 2018"%}</a>
+                                            </div>
+                                        </div>
+                                        <!-- Post Comment & Share Area -->
+                                        <div class="post-comment-share-area d-flex">
+                                            <!-- Post Favourite -->
+                                            <div class="post-favourite">
+                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 17</a>
+                                            </div>
+                                            <!-- Post Comments -->
+                                            <div class="post-comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 12</a>
+                                            </div>
+                                            <!-- Post Share -->
+                                            <div class="post-share">
+                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <h4 class="post-headline">{% trans "Estrellas Michelín españolas"%}</h4>
+                                    </a>
+                                    <p>{% trans "Descubre qué restaurantes tienen Estrellas Michelín y consigue un descuento para probarlos."%}</p>
+                                    <a href="#" class="read-more">{% trans "Seguir leyendo..."%}</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-12">
+                            <div class="list-blog single-post d-sm-flex wow fadeInUpBig" data-wow-delay=".8s">
+                                <!-- Post Thumb -->
+                                <div class="post-thumb">
+                                    <img src="{% static 'img/blog-img/9.jpg'%}" alt="">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <div class="post-meta d-flex">
+                                        <div class="post-author-date-area d-flex">
+                                            <!-- Post Author -->
+                                            <div class="post-author">
+                                                <a href="#">By Gabriela</a>
+                                            </div>
+                                            <!-- Post Date -->
+                                            <div class="post-date">
+                                                <a href="#">{% trans "Junio, 2018"%}</a>
+                                            </div>
+                                        </div>
+                                        <!-- Post Comment & Share Area -->
+                                        <div class="post-comment-share-area d-flex">
+                                            <!-- Post Favourite -->
+                                            <div class="post-favourite">
+                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 13</a>
+                                            </div>
+                                            <!-- Post Comments -->
+                                            <div class="post-comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 8</a>
+                                            </div>
+                                            <!-- Post Share -->
+                                            <div class="post-share">
+                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <h4 class="post-headline">{% trans "¡Vamos a modernizarnos!"%}</h4>
+                                    </a>
+                                    <p>{% trans "Os propongo ingredientes y recetas novedosas para modernizar vuestra cocina."%}</p>
+                                    <a href="#" class="read-more">{% trans "Seguir leyendo..."%}</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ****** Blog Sidebar ****** -->
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="blog-sidebar mt-5 mt-lg-0">
+                        <!-- Single Widget Area -->
+                        <div class="single-widget-area about-me-widget text-center">
+                            <div class="widget-title">
+                                <h6>{% trans "Sobre nosotras"%}</h6>
+                            </div>
+                            <div class="about-me-widget-thumb">
+                                <img src="{% static 'img/about-img/1.jpg'%}" alt="" style="max-width: 100%;">
+                            </div>
+                            <h4 class="font-shadow-into-light">Nerea Solabarrieta & Ibone Urquiola</h4>
+                            <p>{% trans "Somos dos estudiantes de ADE + Ingeniería Informática que tenemos una cosa en común... ¡la passione per la pizza!"%}</p>
+                        </div>
+
+                        <!-- Single Widget Area -->
+                        <div class="single-widget-area subscribe_widget text-center">
+                            <div class="widget-title">
+                                <h6>{% trans "Subscríbete &amp; Síguenos"%}</h6>
+                            </div>
+                            <div class="subscribe-link">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Single Widget Area -->
+                        <div class="single-widget-area popular-post-widget">
+                            <div class="widget-title text-center">
+                                <h6>{% trans "Nuestros Posts"%}</h6>
+                            </div>
+                            <!-- Single Popular Post -->
+                            <div class="single-populer-post d-flex">
+                                <img src="{% static 'img/sidebar-img/1.jpg'%}" alt="">
+                                <div class="post-content">
+                                    <a href="#">
+                                        <h6>{% trans "Premio Gastronomía&Cía 2019"%}</h6>
+                                    </a>
+                                    <p>{% trans "Novimebre, 2019"%}</p>
+                                </div>
+                            </div>
+                            <!-- Single Popular Post -->
+                            <div class="single-populer-post d-flex">
+                                <img src="{% static 'img/sidebar-img/2.jpg'%}" alt="">
+                                <div class="post-content">
+                                    <a href="#">
+                                        <h6>{% trans "¿Pizza saludable? ¿Es eso posible?"%}</h6>
+                                    </a>
+                                    <p>{% trans "Octubre, 2019"%}</p>
+                                </div>
+                            </div>
+                            <!-- Single Popular Post -->
+                            <div class="single-populer-post d-flex">
+                                <img src="{% static 'img/sidebar-img/3.jpg'%}" alt="">
+                                <div class="post-content">
+                                    <a href="#">
+                                        <h6>{% trans "Visita de Martín Berasategi a MammaMia"%}</h6>
+                                    </a>
+                                    <p>{% trans "Febrero, 2019"%}</p>
+                                </div>
+                            </div>
+                            <!-- Single Popular Post -->
+                            <div class="single-populer-post d-flex">
+                                <img src="{% static 'img/sidebar-img/4.jpg'%}" alt="">
+                                <div class="post-content">
+                                    <a href="#">
+                                        <h6>{% trans "Abrimos nuestro nuevo local en Bilbao"%}</h6>
+                                    </a>
+                                    <p>{% trans "Diciembre, 2018"%}</p>
+                                </div>
+                            </div>
+                            <!-- Single Popular Post -->
+                            <div class="single-populer-post d-flex">
+                                <img src="{% static 'img/sidebar-img/5.jpg'%}" alt="">
+                                <div class="post-content">
+                                    <a href="#">
+                                        <h6>{% trans "Consejos para hacer comida rápida y saludable"%}</h6>
+                                    </a>
+                                    <p>{% trans "Agosto, 2018"%}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Widget Area -->
+                        <div class="single-widget-area add-widget text-center">
+                            <div class="add-widget-area">
+                                <img src="{% static 'img/sidebar-img/6.jpg'%}" alt="">
+                                <div class="add-text">
+                                    <div class="yummy-table">
+                                        <div class="yummy-table-cell">
+                                            <h2>{% trans "Libro de recetas"%}</h2>
+                                            <p>{% trans "Cómpralo on-line!"%}</p>
+                                            <a href="#" class="add-btn">{% trans "Comprar ahora"%}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Widget Area -->
+                        <div class="single-widget-area newsletter-widget">
+                            <div class="widget-title text-center">
+                                <h6>{% trans "Recomendaciones"%}</h6>
+                            </div>
+                            <p>{% trans "Si nos quieres dejar un comentario o recomendación, ¡escríbenos!"%}</p>
+                            <div class="newsletter-form">
+                                <form action="#" method="post">
+                                    <input type="email" name="newsletter-email" id="email" placeholder="Email">
+                                    <button type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ****** Blog Area End ****** -->
+
+    <!-- ****** Our Creative Portfolio Area End ****** -->
+
+    <!-- ****** Footer Social Icon Area Start ****** -->
+    <div class="social_icon_area clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-social-area d-flex">
+                        <div class="single-icon">
+                            <a href="https://www.facebook.com/lamammadonosti/"><i class="fa fa-facebook" aria-hidden="true"></i><span>facebook</span></a>
+                        </div>
+                        <div class="single-icon">
+                            <a href="https://twitter.com/lamammadonosti?lang=es"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
+                        </div>
+                        <div class="single-icon">
+                            <a href="https://www.google.com/search?q=la+mamma&oq=la+mamma&aqs=chrome..69i57j0l5.5939j0j7&sourceid=chrome&ie=UTF-8"><i class="fa fa-google-plus" aria-hidden="true"></i><span>GOOGLE+</span></a>
+                        </div>
+                        <div class="single-icon">
+                            <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i><span>linkedin</span></a>
+                        </div>
+                        <div class="single-icon">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+                        </div>
+                        <div class="single-icon">
+                            <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i><span>YOUTUBE</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ****** Footer Social Icon Area End ****** -->
+
+    <!-- ****** Footer Menu Area Start ****** -->
+    <footer class="footer_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-content">
+                        <!-- Logo Area Start -->
+                        <div class="footer-logo-area text-center">
+                            <a href="index.html" class="yummy-logo">Mamma Mia</a>
+                        </div>
+                        <!-- Menu Area Start -->
+                        <nav class="navbar navbar-expand-lg">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#yummyfood-footer-nav" aria-controls="yummyfood-footer-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i> Menu</button>
+                            <!-- Menu Area Start -->
+                            <div class="collapse navbar-collapse justify-content-center" id="yummyfood-footer-nav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">{% trans "Pizzas"%}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">{% trans "Masas"%}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">{% trans "Ingredientes"%}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">{% trans "Sobre nosotras"%}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">{% trans "Contacto"%}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Copywrite Text -->
+                    <div class="copy_right_text text-center">
+                        <p>Copyright @2018 All rights reserved | Esta página está hecha con <i class="fa fa-heart-o" aria-hidden="true"></i> por <a href="https://colorlib.com" target="_blank">Nerea & Ibone</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ****** Footer Menu Area End ****** -->
+
+    <!-- Jquery-2.2.4 js -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js'%}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/bootstrap/popper.min.js'%}"></script>
+    <!-- Bootstrap-4 js -->
+    <script src="{% static 'js/bootstrap/bootstrap.min.js'%}"></script>
+    <!-- All Plugins JS -->
+    <script src="{% static 'js/others/plugins.js'%}"></script>
+    <!-- Active JS -->
+    <script src="{% static 'js/active.js'%}"></script>
+</body>

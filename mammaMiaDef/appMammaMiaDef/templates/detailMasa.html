@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Masa - {{masa.nombre}}{% endblock %}
+
+{% block contenido %}
+<h2>Datos de la masa</h2>
+{% if masa %}
+    <ul>
+        <li>
+            Nombre: {{masa.nombre}}
+        </li>
+        <li>
+            {% if pizzas %}
+            Pizzas con esta masa:
+            {% for d in pizzas %}
+            <ul>
+            <li>
+                <a href="{% url 'detailPizza' d.id %}">{{ d.nombre}}</a>
+            </li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+        </li>
+    </ul>
+{% else %}
+    <p>No existe esta masa</p>
+{% endif %}
+{% endblock %}

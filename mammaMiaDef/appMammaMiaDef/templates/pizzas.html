@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Pizzas{% endblock %}
+
+{% block contenido %}
+<h2>Pizzas</h2>
+{% if lista_pizzas %}
+	<ul>
+	{% for d in lista_pizzas %}
+		<li>
+		    <a href="{% url 'detailPizza' d.id %}">{{ d.nombre}}</a>
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+<p>No hay pizzas creadas.</p>
+{% endif %}
+{% endblock %}
+

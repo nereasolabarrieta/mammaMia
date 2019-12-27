@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Listado de pizzas de cada tipo de masa{% endblock %}
+
+{% block contenido %}
+<h2>Listado de pizzas de cada tipo de masa</h2>
+{% if lista_masas %}
+{% if lista_pizzas %}
+	<ul>
+	{% for m in lista_masas %}
+	{% for d in lista_pizzas %}
+		{%if m.id == d.masa_id %}
+		<li>
+		    Masa {{ m.nombre}} --> <a href="{% url 'detailPizza' d.id %}">{{ d.nombre}}</a>
+		</li>
+		{%endif%}
+	{% endfor %}
+	{% endfor %}
+	</ul>
+{% else %}
+<p>No hay pizzas creadas.</p>
+{% endif %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block titulo %}Masas{% endblock %}
+{% block contenido %}
+
+<h2>Masas</h2>
+{% if lista_masas %}
+	<ul>
+	{% for d in lista_masas %}
+		<li>
+		    <a href="{% url 'detailMasa' d.id %}">{{ d.nombre}}</a>
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+<p>No hay masas creadas.</p>
+{% endif %}
+{% endblock %}
