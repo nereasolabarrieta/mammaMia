@@ -16,12 +16,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: .\appMammaMiaDef\models.py:6 .\appMammaMiaDef\models.py:12
 #: .\appMammaMiaDef\models.py:19
 msgid "Nombre"
-msgstr "Name"
+msgstr "Nom"
 
 #: .\appMammaMiaDef\models.py:13
 msgid "Calorias"
@@ -29,11 +29,11 @@ msgstr "Calories"
 
 #: .\appMammaMiaDef\models.py:21
 msgid "Precio"
-msgstr "Price"
+msgstr "Prix"
 
 #: .\appMammaMiaDef\templates\base.html:75
 msgid "Contacta"
-msgstr "Contact"
+msgstr "Contactez-nous"
 
 #: .\appMammaMiaDef\templates\base.html:123
 #: .\appMammaMiaDef\templates\base.html:213
@@ -45,19 +45,19 @@ msgstr "Pizzas"
 #: .\appMammaMiaDef\templates\base.html:223
 #: .\appMammaMiaDef\templates\base.html:815
 msgid "Masas"
-msgstr "Masses"
+msgstr "Pâte à pizza"
 
 #: .\appMammaMiaDef\templates\base.html:129
 #: .\appMammaMiaDef\templates\base.html:233
 #: .\appMammaMiaDef\templates\base.html:818
 msgid "Ingredientes"
-msgstr "Ingredients"
+msgstr "Ingrédients"
 
 #: .\appMammaMiaDef\templates\base.html:132
 #: .\appMammaMiaDef\templates\base.html:642
 #: .\appMammaMiaDef\templates\base.html:821
 msgid "Sobre nosotras"
-msgstr "About us"
+msgstr "À propos de nous"
 
 #: .\appMammaMiaDef\templates\base.html:135
 #: .\appMammaMiaDef\templates\base.html:824
@@ -66,23 +66,23 @@ msgstr "Contact"
 
 #: .\appMammaMiaDef\templates\base.html:158
 msgid "Nuestra pizza Mediterránea, para los más saludables."
-msgstr "Our Mediterranean pizza, for the healthiest ones."
+msgstr "Notre pizza méditerranéenne, pour les plus sains."
 
 #: .\appMammaMiaDef\templates\base.html:171
 msgid "Para los más carnívoros, ¡Pizzalami!"
-msgstr "For the most carnivorous, Pizzalami!"
+msgstr "Pour les plus carnivores, Pizzalami!"
 
 #: .\appMammaMiaDef\templates\base.html:184
 msgid "Una mezcla entre la mítica Carbonara y sabores nuevos."
-msgstr "A mix between the mythical Carbonara and new flavors."
+msgstr "Un mélange entre la mythique Carbonara et de nouvelles saveurs."
 
 #: .\appMammaMiaDef\templates\base.html:197
 msgid "Si te gustan las masas finas, ésta pizza es tu media naranja."
-msgstr "If you like thin doughs, this pizza is your better half."
+msgstr "Si vous aimez les pâtes fines, cette pizza est votre meilleure moitié."
 
 #: .\appMammaMiaDef\templates\base.html:263
 msgid "Cómo hacer masa de pizza casera"
-msgstr "How to make homemade pizza dough"
+msgstr "Comment faire de la pâte à pizza maison"
 
 #: .\appMammaMiaDef\templates\base.html:265
 msgid ""
@@ -91,9 +91,10 @@ msgid ""
 "harina y la pizca de sal. Una vez que tengáis mas o menos mezclado todo en "
 "el bol lo pasamos a la encima para amasar bien."
 msgstr ""
-"To make Italian pizza dough is very simple. In a bowl add the oil, water and "
-"yeast. Mix and then add the flour and the pinch of salt. Once you have more "
-"or less mixed everything in the bowl we pass it on top to knead well."
+"Faire de la pâte à pizza italienne est très simple. Dans un bol, ajoutez "
+"l'huile, l'eau et la levure. Mélangez puis ajoutez la farine et la pincée de "
+"sel. Une fois que vous avez plus ou moins tout mélangé dans le bol, nous le "
+"passons sur le dessus pour bien pétrir."
 
 #: .\appMammaMiaDef\templates\base.html:268
 msgid ""
@@ -102,10 +103,6 @@ msgid ""
 "terminado cuando la masa esté lisa totalmente, si se pega mucho le ponemos "
 "un poco de harina y seguimos hasta que quede lisa."
 msgstr ""
-"Now the kneading begins. We put some flour on the countertop and we will "
-"have to knead about 3 or 4 minutes without stopping. We will see that we "
-"have finished when the dough is completely smooth, if it sticks a lot we put "
-"a little flour and continue until it is smooth."
 
 #: .\appMammaMiaDef\templates\base.html:271
 msgid ""
@@ -113,180 +110,188 @@ msgid ""
 "reposada la partimos en dos y podemos hacer dos pizzas muy majas. La "
 "amasamos y estiramos. Ponemos lo ingredientes y al horno. ¡Listo!"
 msgstr ""
-"Now, once ready, we let it rest for 1 hour or so. Once it is settled, we "
-"split it in two and we can make two very nice pizzas. We knead it and "
-"stretch it. We put the ingredients and baked. Ready!"
+"Maintenant, le pétrissage commence. Nous mettons de la farine sur le plan de "
+"travail et nous devrons pétrir environ 3 ou 4 minutes sans arrêt. Nous "
+"verrons que nous avons terminé lorsque la pâte est complètement lisse, si "
+"elle colle beaucoup, nous mettons un peu de farine et continuons jusqu'à ce "
+"qu'elle soit lisse."
 
 #: .\appMammaMiaDef\templates\base.html:274
 msgid ""
 " Si no os ha quedado demasiado claro... os dejamos un vídeo explicativo. ¡A "
 "por ello!"
 msgstr ""
-"If it is not too clear ... we leave you an explanatory video. Go for it!"
+"Si vous n'avez pas été trop clair ... nous vous laissons une vidéo "
+"explicative. Allez-y!"
 
 #: .\appMammaMiaDef\templates\base.html:316
 msgid "Donde encontrar las mejores tostas de San Sebastián"
-msgstr "Where to find the best toasts in San Sebastián"
+msgstr "Où trouver les meilleurs toasts à Saint-Sébastien"
 
 #: .\appMammaMiaDef\templates\base.html:339
 msgid "Agosto, 2017"
-msgstr "August, 2017"
+msgstr "Août 2017"
 
 #: .\appMammaMiaDef\templates\base.html:359
 msgid "Donde encontrar los mejores desayunos de San Sebastián"
-msgstr "Where to find the best breakfasts in San Sebastián"
+msgstr "Où trouver les meilleurs petits déjeuners à Saint-Sébastien"
 
 #: .\appMammaMiaDef\templates\base.html:402
 msgid "Top 10 de pintxos de todo Euskadi"
-msgstr "Top 10 pintxos from all over the Basque Country"
+msgstr "Top 10 des pintxos de tout le Pays Basque"
 
 #: .\appMammaMiaDef\templates\base.html:425
 msgid "Novimebre, 2017"
-msgstr "November, 2017"
+msgstr "Novembre 2017"
 
 #: .\appMammaMiaDef\templates\base.html:445
 msgid "¿Brunch en Donosti? ¡Claro!"
-msgstr "Brunch in Donosti? Of course!"
+msgstr "Brunch à Donosti? Bien sûr!"
 
 #: .\appMammaMiaDef\templates\base.html:470
 msgid "Enero, 2018"
-msgstr "January, 2018"
+msgstr "Janvier 2018"
 
 #: .\appMammaMiaDef\templates\base.html:490
 msgid "Para los más golosos"
-msgstr "For the sweet tooth"
+msgstr "Pour la dent sucrée"
 
 #: .\appMammaMiaDef\templates\base.html:492
 msgid ""
 "Una cafetería de Donosti ofrece todo tipo de dulces, con recomendación de "
 "con qué acompañarlo."
 msgstr ""
-"A cafeteria in Donosti offers all kinds of sweets, with a recommendation to "
-"accompany it."
+"La cafétéria de Donosti propose toutes sortes de bonbons, avec une "
+"recommandation de quoi l'accompagner."
 
 #: .\appMammaMiaDef\templates\base.html:493
 #: .\appMammaMiaDef\templates\base.html:538
 #: .\appMammaMiaDef\templates\base.html:583
 #: .\appMammaMiaDef\templates\base.html:628
 msgid "Seguir leyendo..."
-msgstr "Keep reading..."
+msgstr "Continuer à lire..."
 
 #: .\appMammaMiaDef\templates\base.html:515
 msgid "Marzo, 2018"
-msgstr "March, 2018"
+msgstr "Mars 2018"
 
 #: .\appMammaMiaDef\templates\base.html:535
 msgid "¡Pintxos, pintxos y más pintxos!"
-msgstr "Pintxos, pintxos and more pintxos!"
+msgstr "Pintxos, pintxos et plus de pintxos!"
 
 #: .\appMammaMiaDef\templates\base.html:537
 msgid "Descubre una de las mejores rutas gastronómicas de pintxos de Donosti."
-msgstr "Discover one of the best gastronomic routes of pintxos de Donosti."
+msgstr ""
+"Découvrez l'un des meilleurs itinéraires gastronomiques des pintxos de "
+"Donosti."
 
 #: .\appMammaMiaDef\templates\base.html:560
 msgid "Abril, 2018"
-msgstr "April, 2018"
+msgstr "Avril 2018"
 
 #: .\appMammaMiaDef\templates\base.html:580
 msgid "Estrellas Michelín españolas"
-msgstr "Spanish Michelin stars"
+msgstr "Étoiles espagnoles Michelin"
 
 #: .\appMammaMiaDef\templates\base.html:582
 msgid ""
 "Descubre qué restaurantes tienen Estrellas Michelín y consigue un descuento "
 "para probarlos."
 msgstr ""
-"Discover which restaurants have Michelin stars and get a discount to try "
-"them. "
+"Découvrez quels restaurants ont des étoiles Michelin et obtenez un rabais "
+"pour les essayer."
 
 #: .\appMammaMiaDef\templates\base.html:605
 msgid "Junio, 2018"
-msgstr "June, 2018"
+msgstr "Juin 2018"
 
 #: .\appMammaMiaDef\templates\base.html:625
 msgid "¡Vamos a modernizarnos!"
-msgstr "Let's modernize!"
+msgstr "Modernisons!"
 
 #: .\appMammaMiaDef\templates\base.html:627
 msgid ""
 "Os propongo ingredientes y recetas novedosas para modernizar vuestra cocina."
-msgstr "I propose novel ingredients and recipes to modernize your kitchen."
+msgstr ""
+"Je propose de nouveaux ingrédients et recettes pour moderniser votre cuisine."
 
 #: .\appMammaMiaDef\templates\base.html:648
 msgid ""
 "Somos dos estudiantes de ADE + Ingeniería Informática que tenemos una cosa "
 "en común... ¡la passione per la pizza!"
 msgstr ""
-"We are two students of ADE + Computer Engineering who have one thing in "
-"common ... passion for pizza!"
+"Nous sommes deux étudiants en ADE + Computer Engineering qui ont une chose "
+"en commun ... la passion de la pizza!"
 
 #: .\appMammaMiaDef\templates\base.html:654
 msgid "Subscríbete &amp; Síguenos"
-msgstr "Subscribe &amp; Follow us"
+msgstr "Souscrire et suivez-nous"
 
 #: .\appMammaMiaDef\templates\base.html:669
 msgid "Nuestros Posts"
-msgstr "Our posts"
+msgstr "Nos articles"
 
 #: .\appMammaMiaDef\templates\base.html:676
 msgid "Premio Gastronomía&Cía 2019"
-msgstr "Gastronomy & Co. Award 2019"
+msgstr "Prix ​​Gastronomie & Co. 2019"
 
 #: .\appMammaMiaDef\templates\base.html:678
 msgid "Novimebre, 2019"
-msgstr "November, 2019"
+msgstr "Novembre 2019"
 
 #: .\appMammaMiaDef\templates\base.html:686
 msgid "¿Pizza saludable? ¿Es eso posible?"
-msgstr "Healthy pizza? Is that possible?"
+msgstr "Pizza saine? Est-ce possible?"
 
 #: .\appMammaMiaDef\templates\base.html:688
 msgid "Octubre, 2019"
-msgstr "October, 2019"
+msgstr "Octobre 2019"
 
 #: .\appMammaMiaDef\templates\base.html:696
 msgid "Visita de Martín Berasategi a MammaMia"
-msgstr "Martín Berasategi visit to MammaMia"
+msgstr "Visite de Martín Berasategi à MammaMia"
 
 #: .\appMammaMiaDef\templates\base.html:698
 msgid "Febrero, 2019"
-msgstr "February, 2019"
+msgstr "Février 2019"
 
 #: .\appMammaMiaDef\templates\base.html:706
 msgid "Abrimos nuestro nuevo local en Bilbao"
-msgstr "We are opening our new store in Bilbao"
+msgstr "Nous ouvrons notre nouveau magasin à Bilbao"
 
 #: .\appMammaMiaDef\templates\base.html:708
 msgid "Diciembre, 2018"
-msgstr "December, 2018"
+msgstr "Décembre 2018"
 
 #: .\appMammaMiaDef\templates\base.html:716
 msgid "Consejos para hacer comida rápida y saludable"
-msgstr "Tips for making fast and healthy food"
+msgstr "Conseils pour préparer des aliments rapides et sains"
 
 #: .\appMammaMiaDef\templates\base.html:718
 msgid "Agosto, 2018"
-msgstr "August, 2018"
+msgstr "Août 2018"
 
 #: .\appMammaMiaDef\templates\base.html:730
 msgid "Libro de recetas"
-msgstr "Recipe book"
+msgstr "Livre de recettes"
 
 #: .\appMammaMiaDef\templates\base.html:731
 msgid "Cómpralo on-line!"
-msgstr "Buy it online"
+msgstr "Achetez-le en ligne!"
 
 #: .\appMammaMiaDef\templates\base.html:732
 msgid "Comprar ahora"
-msgstr "Buy now"
+msgstr "Acheter maintenant"
 
 #: .\appMammaMiaDef\templates\base.html:742
 msgid "Recomendaciones"
-msgstr "Recommendations"
+msgstr "Recommandations"
 
 #: .\appMammaMiaDef\templates\base.html:744
 msgid "Si nos quieres dejar un comentario o recomendación, ¡escríbenos!"
-msgstr "If you want to leave us a comment or recommendation, write us!"
+msgstr ""
+"Si vous souhaitez nous laisser un commentaire ou une recommandation, écrivez-"
+"nous!"
 
 #: .\mammaMiaDef\settings.py:113
 msgid "English"
@@ -294,22 +299,8 @@ msgstr "English"
 
 #: .\mammaMiaDef\settings.py:114
 msgid "Español"
-msgstr "Spanish"
+msgstr "Español"
 
 #: .\mammaMiaDef\settings.py:115
 msgid "French"
-msgstr ""
-
-#, fuzzy
-#~| msgid "Ingredientes"
-#~ msgid "Datos del ingrediente"
-#~ msgstr "Ingredient facts"
-
-#~ msgid "Pizzas que contienen este ingrediente: "
-#~ msgstr "Pizzas that contain this ingredient:"
-
-#~ msgid "No hay pizzas asociadas con ese ingrediente."
-#~ msgstr "There are no pizzas associated with that ingredient"
-
-#~ msgid "No existe este ingrediente"
-#~ msgstr "This ingredient does not exist"
+msgstr "French"

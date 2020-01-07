@@ -1,20 +1,19 @@
 {% extends 'base.html' %}
-{% load i18n %}
-{% block titulo %}{% blocktrans %}Ingrediente: {{ ingrediente.nombre}}{% endblocktrans %}{% endblock %}
+{% block titulo %}Ingrediente: {{ ingrediente.nombre}}{% endblock %}
 
 {% block contenido %}
-<h2>{% trans "Datos del ingrediente" %}</h2>
+<h2>Datos del ingrediente</h2>
 {% if ingrediente %}
     <ul>
         <li>
-            {% blocktrans %}Ingrediente: {{ ingrediente.nombre}}{% endblocktrans %}
+            Ingrediente: {{ ingrediente.nombre}}
         </li>
         <li>
             Calorías (kcal): {{ ingrediente.calorias}}
         </li>
         <li>
             {% if pizzas %}
-            {% trans "Pizzas que contienen este ingrediente: " %}
+            Pizzas que contienen este ingrediente: 
             <ol>
             {% for d in pizzas %}
                 <li>
@@ -23,12 +22,12 @@
             {% endfor %}
             </ol>
             {% else %}
-            <p>{% trans "No hay pizzas asociadas con ese ingrediente." %}</p>
+            <p>No hay pizzas asociadas con ese ingrediente.</p>
             {% endif %}
         </li>
     </ul>
 {% else %}
-    <p>{% trans "No existe este ingrediente" %}</p>
+    <p>No existe este ingrediente</p>
 {% endif %}
 
 {% endblock %}
